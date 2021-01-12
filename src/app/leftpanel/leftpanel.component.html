@@ -1,0 +1,75 @@
+<div class="row  d-none d-lg-block">
+  <div class="col-10 text-center ml-4" style="background-color: white; padding: 5px;">
+        <img src="https://i.ibb.co/Hry1kDH/17443322900502723126.jpg" class="img-fluid">
+  </div>
+</div>
+
+<div class="row mt-4 mx-2">
+  <div class="col bg-white d-none d-lg-block">
+    <div class="zippy">
+      <div class="zippy-heading style-{{hide1}}" [class.expanded]="isExpanded1" (click)="toggle1()">
+        <i *ngIf="!isExpanded1"  class="fa fa-chevron-down "></i>  <i *ngIf="isExpanded1" class="fa fa-chevron-up"></i> &nbsp;&nbsp;&nbsp;&nbsp; Select Language
+     </div>
+      <div *ngIf="isExpanded1" class="zippy-body">
+       <div *ngFor="let item of languageCB">
+        <input type="checkbox" id="{{item.language}"
+        value="item.selected"
+       (change)="eventChange()"
+        [(ngModel)]="item.selected" >
+        {{item.language}}
+       </div>
+      </div>
+    </div>
+   </div>
+</div>
+
+
+<div class="row mt-4 mx-2">
+  <div class="col bg-white d-none d-lg-block">
+    <div class="zippy">
+      <div class="zippy-heading style-{{hide2}}" [class.expanded]="isExpanded2" (click)="toggle2()">
+        <i *ngIf="!isExpanded2"  class="fa fa-chevron-down"></i>  <i *ngIf="isExpanded2" class="fa fa-chevron-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;Format
+       
+      </div>
+      <div *ngIf="isExpanded2" class="zippy-body">
+       <div *ngFor="let item of formatCB">
+        <input type="checkbox" id="{{item.format}"
+        value="item.selected"
+       (change)="eventChange()"
+        [(ngModel)]="item.selected" >
+        {{item.format}}
+       </div>
+      </div>
+    </div>
+   </div>
+</div>
+
+<div class="row mt-4 mx-2">
+  <div class="col bg-white d-none d-lg-block">
+    <div class="zippy">
+      <div class="zippy-heading style-{{hide3}}" [class.expanded]="isExpanded3" (click)="toggle3()">
+        <i *ngIf="!isExpanded3"  class="fa fa-chevron-down"></i>  <i *ngIf="isExpanded3" class="fa fa-chevron-up"></i> &nbsp;&nbsp;&nbsp;&nbsp; Genre
+       
+      </div>
+      <div *ngIf="isExpanded3" class="zippy-body">
+       <div *ngFor="let item of genreCB">
+        <input type="checkbox" id="{{item.genre}"
+        value="item.selected"
+       (change)="eventChange()"
+        [(ngModel)]="item.selected" >
+        {{item.genre}}
+       </div>
+      </div>
+    </div>
+ </div>
+</div>
+     <!--
+   <div *ngFor="let item of sellerCB;index as i">
+    <input type="checkbox" id="{{item.seller}}"
+    value="item.selected"
+  
+    [(ngModel)]="item.selected" >
+    {{item.seller}}
+  </div>
+         -->
+        

@@ -1,0 +1,46 @@
+<app-header></app-header>
+<app-images></app-images>
+<div class="d-none  d-lg-block">
+  <nav class="navbar navbar-expand navbar-light bg-light mx-4 " style="font-size: larger;" >
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active"><h2>Movies</h2></a>
+    <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item " >
+        <a class="nav-link " >Now Showing</a>
+      </li>
+      <li class="nav-item " >
+        <a class="nav-link">Coming Soon</a>
+      </li>
+      <li class="nav-item " >
+        <a class="nav-link">Exclusive</a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+</div>
+<div class="row bg-light"> 
+ <div class="col-lg-10 col-lg-offset-0 col-md-12 col-sm-12 col-xs-12">
+   <div class="row">
+    <div class="col-3 d-none d-lg-block" >
+     <app-leftpanel [languageCB]="languageStructure" [formatCB]="formatStructure" [genreCB]="genreStructure"  (optSel)="optChange()"></app-leftpanel>
+    </div>
+    <div class="col-lg-9 offset-lg-0 col-11 offset-0" >
+      <div class="row">
+        <div class="col-lg-4 offset-lg-0 col-md-3 offset-md-1 col-5  offset-1  "  *ngFor="let c of movies;index as i">
+          <div class="card bg-white px-3 " (click)="showDetails(i)" >
+              <img src="{{c.img}}" class="card-img-top ">
+              <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xm-12"><i class="fa fa-heart" style="color: red;"></i>{{c.rating}}  </div>
+              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">{{c.title}} </div>
+              </div>
+              <div class="row">
+                <div class="col-6 text-muted d-none  d-lg-block" style="font-size: 10px;">{{c.votes}} votes </div>
+              <div class="col-6 text-muted d-none  d-lg-block" style="font-size: 10px;">{{c.desc}} </div>
+              </div>
+          </div>
+        </div>
+      </div>
+     </div>
+   </div>
+ </div>
+</div>

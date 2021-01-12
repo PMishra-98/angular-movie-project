@@ -1,0 +1,113 @@
+<app-header></app-header>
+
+  <div class="row bg-secondary text-white pt-4"><div  class="col ml-3"><h3 >{{title}}</h3></div></div>
+  <div  class="row bg-secondary text-white">
+    <div  class="col ml-3">
+    <i class="fa fa-heart" style="color: red;">
+    </i> &nbsp; <span  style="font-size: 20px;">
+    <strong >{{rating}}</strong>
+    </span>&nbsp;&nbsp; <span  class="circle">{{genre1}}</span>
+    &nbsp;<span  class="circle">{{genre2}}</span></div></div>
+    <div class="row bg-secondary text-white"><div  class="col ml-3">
+    <span style="font-size: 10px;">{{votes}} votes</span></div></div>
+ <div class="row bg-light pt-2 pb-2" >
+  <div class="col-lg-5 ml-3" >
+    <button class=" style-{{hide1}} my-4  mx-1  bt" (click)="showColor(1)" id="value1">{{today | date:'d'}} TODAY</button>
+ <button class=" style-{{hide2}} my-4  mx-1  bt" (click)="showColor(2)" id="value2">{{tom | date:'d MMM'}}</button>
+ <button class=" style-{{hide3}} my-4  mx-1  bt" (click)="showColor(3)" id="value3">{{yes | date:'d MMM'}}</button>
+  </div>
+  <div class="col-lg-2 border-right d-none d-lg-block ">
+    <div class="dropdown ">
+      <div class="dropbtn  my-2">
+       Filter Price
+        <i
+        class="fa fa-chevron-down"
+        style="font-size: 10px;color:lightgrey;"
+        id="onhover">
+      </i>
+      </div>
+      <div class="dropdown-content" >
+        <div *ngFor="let item of priceStructure">
+          &nbsp; <input type="checkbox" id="{{item.price}"
+          value="item.selected"
+         (change)="optChange()"
+          [(ngModel)]="item.selected" >
+        {{item.price}}
+         </div>
+       </div>
+    </div> 
+  </div>
+  <div class="col-lg-2 border-right d-none d-lg-block ">
+    <div class="dropdown ">
+      <div class="dropbtn  my-3">
+       Filter Showtime 
+        <i
+        class="fa fa-chevron-down"
+        style="font-size: 10px;color:lightgrey;"
+        id="onhover">
+      </i>
+      </div>
+      <div class="dropdown-content" >
+        <div *ngFor="let item of timeStructure">
+          &nbsp; <input type="checkbox" id="{{item.time}"
+          value="item.selected"
+         (change)="optChange()"
+          [(ngModel)]="item.selected" >
+         {{item.time}}
+         </div>
+       </div>
+    </div>
+   </div> 
+  </div>
+
+
+ <div class="row">
+ <div class="col-lg-9 col-12">
+   <div class="row" style="background-color:rgb(245, 191, 169);">
+    <div class="col-lg-6 col-6 border mt-0" >
+      <svg version="1.1"xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"width="40"height="45"viewBox="0 0 130 45"xml:space="preserve"style="fill: green;"><path d="M73.5 95.2H26.8c-1.3 0-2.3-1-2.3-2.3V7.6c0-1.3 1-2.3 2.3-2.3h46.7c1.3 0 2.3 1 2.3 2.3V93c0 1.2-1.1 2.2-2.3 2.2zM26.8 6.4c-.6 0-1.1.5-1.1 1.1v85.4c0 .6.5 1.1 1.1 1.1h46.7c.6 0 1.1-.5 1.1-1.1V7.6c0-.6-.5-1.1-1.1-1.1l-46.7-.1z"></path><path d="M68.8 78.9H31.3c-.6 0-1.2-.5-1.2-1.2V16c0-.6.5-1.2 1.2-1.2h37.5c.6 0 1.2.5 1.2 1.2v61.7c0 .6-.5 1.2-1.2 1.2zm0-62.9H31.3v61.6h37.4l.1-61.6zm-19 74.4c-2.3 0-4.1-1.9-4.1-4.1 0-2.3 1.9-4.1 4.1-4.1 2.3 0 4.1 1.9 4.1 4.1a4 4 0 0 1-4.1 4.1zm0-7.1a2.9 2.9 0 1 0 2.9 2.9c.1-1.5-1.2-2.9-2.9-2.9zm-5.5-72.1h-1.6c-.3 0-.6-.3-.6-.6s.3-.6.6-.6h1.6c.3 0 .6.3.6.6s-.3.6-.6.6zm11 0h-6.5c-.3 0-.6-.3-.6-.6s.3-.6.6-.6h6.5c.3 0 .6.3.6.6s-.2.6-.6.6z"></path></svg>
+      <p style="font-size: 12px;margin-bottom: 0;">M-Ticket Available</p>
+    </div>
+     <div class="col-lg-6 col-6" >
+      <svg version="1.1"xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"width="40"height="45"
+      viewBox="0 0 102 102"xml:space="preserve"style="fill: green;"><path fill="#F90" d="M58.7 85.9H8.5c-4.1 0-7.5-3.4-7.5-7.5v-1.1c0-4.1 3.4-7.5 7.5-7.5h50.2c4.1 0 7.5 3.4 7.5 7.5v1.1c0 4.1-3.4 7.5-7.5 7.5zM8.5 74.3a3 3 0 0 0-3 3v1.1a3 3 0 0 0 3 3h50.2a3 3 0 0 0 3-3v-1.1a3 3 0 0 0-3-3H8.5zM54.8 99H12.4c-3.7 0-6.8-3-6.8-6.8v-4c0-1.2 1-2.2 2.2-2.2s2.2 1 2.2 2.2v4c0 1.3 1.1 2.3 2.4 2.3h42.4c1.3 0 2.3-1.1 2.3-2.3v-4c0-1.2 1-2.2 2.2-2.2s2.2 1 2.2 2.2v4c.1 3.8-3 6.8-6.7 6.8zm42-57.9c-1.2 0-2.2-1-2.2-2.2v-2.8c0-.6-.5-1-1-1h-54a1 1 0 0 0-1 1v2.8c0 1.2-1 2.2-2.2 2.2-1.2 0-2.2-1-2.2-2.2v-2.8c0-3 2.5-5.5 5.5-5.5h54c3 0 5.5 2.4 5.5 5.5v2.8c-.2 1.2-1.2 2.2-2.4 2.2z"></path><path fill="#F90"d="M63.9 31.4c-1 0-1.9-.7-2.2-1.7L56.6 6.2c-.1-.4-.3-.5-.4-.6-.1-.1-.4-.2-.8-.1L41 8.6c-1.2.3-2.4-.5-2.6-1.7-.3-1.2.5-2.4 1.7-2.6l14.4-3.1c1.4-.3 2.9 0 4.1.7 1.2.8 2.1 2 2.4 3.4l5.1 23.5c.3 1.2-.5 2.4-1.7 2.6h-.5zm-3.7 38.7c-.8 0-1.5-.4-1.9-1.1-3.9-6.7-12.4-14.5-23.8-14.5s-20 7.8-23.8 14.5c-.6 1.1-2 1.4-3 .8-1.1-.6-1.4-2-.8-3 5.9-10.1 16.7-16.7 27.7-16.7s21.8 6.5 27.7 16.7c.6 1.1.3 2.4-.8 3-.5.2-.9.3-1.3.3z"></path><ellipse fill="#F90" cx="24.3" cy="63.9" rx="1.7" ry="1.7"></ellipse><ellipse fill="#F90" cx="40.7" cy="65.6" rx="1.7" ry="1.7"></ellipse><ellipse fill="#F90" cx="33.6" cy="58.8" rx="1.7" ry="1.7"></ellipse><path fill="#F90"d="M47 49.6c-1.2 0-2.2-.9-2.2-2.1l-.5-10.3c-.1-1.2.9-2.3 2.1-2.3 1.3-.1 2.3.9 2.3 2.1l.5 10.3c.1 1.2-.9 2.3-2.1 2.3H47zM82.1 93H71.4c-1.2 0-2.2-1-2.2-2.2s1-2.2 2.2-2.2h10.7c.6 0 1-.5 1-1L85.5 37a2.3 2.3 0 0 1 2.3-2.1c1.2.1 2.2 1.1 2.1 2.3l-2.4 50.5c.1 2.9-2.4 5.3-5.4 5.3z"></path></svg>
+      <p style="font-size: 12px;margin-bottom: 0;" >Food Available</p>
+    </div>
+   </div>
+   <div class="row border-bottom-1 pt-1 mb-1" *ngFor="let d of details; index as i">
+     <div class="col-lg-1 col-2">
+      <i class="fa fa-heart-o ml-2" style="color: black; font-weight: bold;" *ngIf="!d.like" (click)="heart(i)"></i>
+      <i class="fa fa-heart-o ml-2" style="color: red;font-weight: bold;" *ngIf="d.like" (click)="heart(i)"></i>
+     </div>
+     <div class="col-lg-3 col-9">
+      <h6 class="mb-0" style="font-size: 15px;"> {{d.name}}</h6>
+        <svg version="1.1"xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"width="25"height="30"viewBox="0 0 130 45"xml:space="preserve"style="fill: green;"><path d="M73.5 95.2H26.8c-1.3 0-2.3-1-2.3-2.3V7.6c0-1.3 1-2.3 2.3-2.3h46.7c1.3 0 2.3 1 2.3 2.3V93c0 1.2-1.1 2.2-2.3 2.2zM26.8 6.4c-.6 0-1.1.5-1.1 1.1v85.4c0 .6.5 1.1 1.1 1.1h46.7c.6 0 1.1-.5 1.1-1.1V7.6c0-.6-.5-1.1-1.1-1.1l-46.7-.1z"></path><path d="M68.8 78.9H31.3c-.6 0-1.2-.5-1.2-1.2V16c0-.6.5-1.2 1.2-1.2h37.5c.6 0 1.2.5 1.2 1.2v61.7c0 .6-.5 1.2-1.2 1.2zm0-62.9H31.3v61.6h37.4l.1-61.6zm-19 74.4c-2.3 0-4.1-1.9-4.1-4.1 0-2.3 1.9-4.1 4.1-4.1 2.3 0 4.1 1.9 4.1 4.1a4 4 0 0 1-4.1 4.1zm0-7.1a2.9 2.9 0 1 0 2.9 2.9c.1-1.5-1.2-2.9-2.9-2.9zm-5.5-72.1h-1.6c-.3 0-.6-.3-.6-.6s.3-.6.6-.6h1.6c.3 0 .6.3.6.6s-.3.6-.6.6zm11 0h-6.5c-.3 0-.6-.3-.6-.6s.3-.6.6-.6h6.5c.3 0 .6.3.6.6s-.2.6-.6.6z"></path></svg>
+        <p style="font-size: 10px;margin-top: 0;display: inline-block;">M-Ticket</p>&nbsp;
+       <svg version="1.1"xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink"width="24"height="30"
+       viewBox="0 0 102 102"xml:space="preserve"style="fill: green;"><path fill="#F90" d="M58.7 85.9H8.5c-4.1 0-7.5-3.4-7.5-7.5v-1.1c0-4.1 3.4-7.5 7.5-7.5h50.2c4.1 0 7.5 3.4 7.5 7.5v1.1c0 4.1-3.4 7.5-7.5 7.5zM8.5 74.3a3 3 0 0 0-3 3v1.1a3 3 0 0 0 3 3h50.2a3 3 0 0 0 3-3v-1.1a3 3 0 0 0-3-3H8.5zM54.8 99H12.4c-3.7 0-6.8-3-6.8-6.8v-4c0-1.2 1-2.2 2.2-2.2s2.2 1 2.2 2.2v4c0 1.3 1.1 2.3 2.4 2.3h42.4c1.3 0 2.3-1.1 2.3-2.3v-4c0-1.2 1-2.2 2.2-2.2s2.2 1 2.2 2.2v4c.1 3.8-3 6.8-6.7 6.8zm42-57.9c-1.2 0-2.2-1-2.2-2.2v-2.8c0-.6-.5-1-1-1h-54a1 1 0 0 0-1 1v2.8c0 1.2-1 2.2-2.2 2.2-1.2 0-2.2-1-2.2-2.2v-2.8c0-3 2.5-5.5 5.5-5.5h54c3 0 5.5 2.4 5.5 5.5v2.8c-.2 1.2-1.2 2.2-2.4 2.2z"></path><path fill="#F90"d="M63.9 31.4c-1 0-1.9-.7-2.2-1.7L56.6 6.2c-.1-.4-.3-.5-.4-.6-.1-.1-.4-.2-.8-.1L41 8.6c-1.2.3-2.4-.5-2.6-1.7-.3-1.2.5-2.4 1.7-2.6l14.4-3.1c1.4-.3 2.9 0 4.1.7 1.2.8 2.1 2 2.4 3.4l5.1 23.5c.3 1.2-.5 2.4-1.7 2.6h-.5zm-3.7 38.7c-.8 0-1.5-.4-1.9-1.1-3.9-6.7-12.4-14.5-23.8-14.5s-20 7.8-23.8 14.5c-.6 1.1-2 1.4-3 .8-1.1-.6-1.4-2-.8-3 5.9-10.1 16.7-16.7 27.7-16.7s21.8 6.5 27.7 16.7c.6 1.1.3 2.4-.8 3-.5.2-.9.3-1.3.3z"></path><ellipse fill="#F90" cx="24.3" cy="63.9" rx="1.7" ry="1.7"></ellipse><ellipse fill="#F90" cx="40.7" cy="65.6" rx="1.7" ry="1.7"></ellipse><ellipse fill="#F90" cx="33.6" cy="58.8" rx="1.7" ry="1.7"></ellipse><path fill="#F90"d="M47 49.6c-1.2 0-2.2-.9-2.2-2.1l-.5-10.3c-.1-1.2.9-2.3 2.1-2.3 1.3-.1 2.3.9 2.3 2.1l.5 10.3c.1 1.2-.9 2.3-2.1 2.3H47zM82.1 93H71.4c-1.2 0-2.2-1-2.2-2.2s1-2.2 2.2-2.2h10.7c.6 0 1-.5 1-1L85.5 37a2.3 2.3 0 0 1 2.3-2.1c1.2.1 2.2 1.1 2.1 2.3l-2.4 50.5c.1 2.9-2.4 5.3-5.4 5.3z"></path></svg>
+       <p style="font-size: 10px;margin-top: 0;display: inline-block;">F&B</p>
+     </div>
+     <div class="col-lg-6 mb-1" >
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+       <div  *ngFor="let t of details[i].timings;index as j" style="display: inline-block;">
+        <button type="button" class="btn  text-primary btn-sm border-muted bg-white m-1" data-toggle="tooltip" data-placement="left" title="{{t.price}}" (click)="showSteats(i,t.name,j)">
+          {{t.name}}
+         </button>
+       </div>
+         </div>
+      </div>
+      <div class="row mt-0">
+        <div class="col ml-3 mt-0" style="font-size: 14px;">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dot" fill="red" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+          </svg>Cancellation available
+        </div>
+      </div>
+     </div>
+   </div>
+ </div>
+ <div class="col-lg-3 d-none d-lg-block">
+  <img src="https://i.ibb.co/JqbbCJz/1331654202504679967.jpg">
+ </div>
+</div>

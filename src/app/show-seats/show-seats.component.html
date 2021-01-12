@@ -1,0 +1,229 @@
+<!--<nav class="navbar navbar-expand text-white bg-dark">
+ <h2 class="pb-2 ml-lg-2 mx-2"> <a class=" text-white" routerLink="{{path}}" routerLinkActive="active">
+  <i class="fa fa-chevron-left"></i></a></h2>
+
+ <div class="collapse navbar-collapse flex-column">
+          <ul class="navbar-nav mr-auto mb-0">
+              <li class="nav-item ">
+                  <a class="nav-link"><h4>{{moviename}}</h4></a>
+              </li>
+              <li  class="nav-item ">
+                <a class="nav-link">{{ticket}} Tickets</a>
+              </li>
+              <li  class="nav-item ">
+                <a class="nav-link text-white"  routerLink="{{path}}"><i class="fa fa-times"></i></a>
+              </li>
+          </ul>
+        
+      <ul class="navbar-nav flex-row mr-auto mb-0">
+              <li class="nav-item">
+                  <a class="nav-link "><h6>{{place.name}}</h6></a>
+              </li>
+          </ul>
+        
+      </div>
+</nav>-->
+<div  class="row bg-dark pt-1 pb-3" style="font-size:60px;">
+  <div  class="col-lg-6  col-md-12 col-sm-12  text-left text-white" style="font-size: 25px;">
+    <div  class="row ">
+      <div  class="col-lg-1 col-md-1 col-2  pt-2">
+        <a class="text-white" routerLink="{{path}}"><i  class="fa fa-chevron-left ml-2"></i></a>
+      </div>
+      <div  class="col-lg-11 col-md-4 col-7">
+        <div class="row"><span >{{moviename}}</span>
+        </div>
+        <div class="row" style="font-size: 15px;"> 
+          {{place.name}}
+        </div></div></div>
+      </div>
+      <div  class="col-lg-6 text-right text-white d-none d-lg-block">
+        <div  class="row pt-3 ">
+          <div class="col" style="font-size: 15px;">
+            {{ticket}} Tickets &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+             <a class="text-white" routerLink="{{path}}"><i  class="fa fa-times mr-2"></i></a>
+</div></div></div></div>
+<div class="row bg-light " >
+  <div class="col-lg-6 col-12 ml-2 text-center text-lg-left text-md-left mt-3" style="font-size: 14px;">{{daydate}}, {{selecttime}}</div>
+</div>
+<div class="row bg-light ">
+  <div class="col ml-2 mb-3"  >
+    <div *ngFor="let t of place.timings; index as i" style="display: inline-block;">
+      <button class="btn1 btn-md btn btn-outline-success m-1 " *ngIf="!t.color" (click)="showDetails(t.name,i)" style="font-size: 14px;">{{t.name}}</button>
+<button class="btn1 btn-md btn btn-outline-success m-1" (click)="showDetails(t.name,i)"  *ngIf="t.color" style=" font-size: 14px; background-color:#006633;
+    color: white;">{{t.name}}</button>
+    </div>
+  </div>
+</div>
+
+<div style="font-size: 19px;">
+  <div  class="row pb-2 ml-4 mr-4 no-gutters mt-1">
+    <div class="col text-secondary text-left border-bottom ml-5"> RECLINER - Rs 420.00 
+   </div>
+  </div>
+    <div class="row ml-4 mr-4 no-gutters" *ngFor="let s of details;index as i">
+      <div  class="col-1 text-right mr-1"*ngIf="s.price==420">{{s.rowName}}</div>
+      <div  class="col-10 text-left" *ngIf="s.price==420">
+      <div  style="margin-left: 1;margin-right:1;margin-top:1;margin-bottom: 1;float:left;width:20;height:20"  *ngFor="let seat of s.seatList">
+      <button  style="display: inline-block;font-size:  10px; text-align: center;width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+      margin-right: 2px;
+      margin-bottom: 4px;background-color: white;
+      margin-left: 2px;"  *ngIf="seat.available&&!seat.booked" (click)="addPrice(i,seat.seatNo)" class="btn btn-sm  btn-outline-secondary-false mr-1 p-1">
+      <span >{{seat.seatNo}}</span></button>
+      <button  style="display: inline-block;font-size:  12px; text-align: center;width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+      margin-right: 2px;
+      margin-bottom: 4px;background-color: lightgrey;
+      margin-left: 2px;"  *ngIf="!seat.available" (click)="addPrice(i,seat.seatNo)"class="btn btn-sm text-white btn btn-outline-secondary-false mr-1 p-1 text-center">
+  <span >{{seat.seatNo}}</span></button>
+  <button  style="display: inline-block;font-size:  12px; text-align: center;width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+  margin-right: 2px;
+  margin-bottom: 4px;background-color:#00CC99;
+  margin-left: 2px;"  *ngIf="seat.available&&seat.booked"  (click)="addPrice(i,seat.seatNo)"class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1 text-center">
+<span >{{seat.seatNo}}</span></button>
+    </div></div></div>
+  
+    <div class="row pb-2 ml-4 mr-4 mt-4">
+      <div  class="col text-secondary text-left border-bottom ml-5"> GOLD - Rs 250.00
+       </div>
+      </div>
+  
+    <div class="row ml-4 mr-4 no-gutters" *ngFor="let s of details;index as i">
+      <div class="col-1 text-right mr-1"  *ngIf="s.price==250">{{s.rowName}}</div>
+    <div  class="col-3" *ngIf="s.price==250" >
+      <div  style="margin-right:2;margin-left:2;margin-top:4;margin-bottom: 4;float:left;width:22;height:22" *ngFor="let seat of s.seatList">
+      <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+          margin-right: 2px;
+          margin-bottom: 4px;background-color: white;
+          margin-left: 2px;" class="btn btn-sm btn btn-outline-secondary-false mr-1 p-1"  *ngIf="seat.available&&!seat.booked&&seat.seatNo<8" (click)="addPrice(i,seat.seatNo)"> {{seat.seatNo}}
+       </button>
+       <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+       margin-right: 2px;
+       margin-bottom: 4px;background-color: lightgrey;
+       margin-left: 2px;" class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1" *ngIf="!seat.available&&seat.seatNo<8"(click)="addPrice(i,seat.seatNo)" > {{seat.seatNo}}
+    </button>
+    <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+         margin-right: 2px;
+        margin-bottom: 4px;background-color: #00CC99;
+        margin-left: 2px;" class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1" *ngIf="seat.available&&seat.booked&&seat.seatNo<8" (click)="addPrice(i,seat.seatNo)"> {{seat.seatNo}}
+    </button>
+          </div>
+      </div>
+      <div  class="col-4"  *ngIf="s.price==250">
+        <div  style="margin-left: 2;margin-right:2;margin-top:4;margin-bottom: 4;float:left;width:22;height:22" *ngFor="let seat of s.seatList">
+          <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+          margin-right: 2px;
+          margin-bottom: 4px;background-color: white;
+          margin-left: 2px;" class="btn  btn-sm btn btn-outline-secondary-false mr-1 p-1"  *ngIf="seat.available&&!seat.booked&&seat.seatNo>7&&seat.seatNo<19" (click)="addPrice(i,seat.seatNo)"> {{seat.seatNo}}
+       </button>
+       <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+       margin-right: 2px;
+       margin-bottom: 4px;background-color: lightgrey;
+       margin-left: 2px;" class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1" *ngIf="!seat.available&&seat.seatNo>7&&seat.seatNo<19"(click)="addPrice(i,seat.seatNo)" > {{seat.seatNo}}
+    </button>
+    <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+         margin-right: 2px;
+        margin-bottom: 4px;background-color: #00CC99;
+        margin-left: 2px;" class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1" *ngIf="seat.available&&seat.booked&&seat.seatNo>7&&seat.seatNo<19" (click)="addPrice(i,seat.seatNo)"> {{seat.seatNo}}
+    </button>
+
+         </div>
+          </div>
+            <div  class="col-3"  *ngIf="s.price==250">
+              <div  style="margin-left: 2;margin-right:2;margin-top:4;margin-bottom: 4;float:left;width:22;height:22" *ngFor="let seat of s.seatList">
+                <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+          margin-right: 2px;
+          margin-bottom: 4px;background-color: white;
+          margin-left: 2px;" class="btn btn-sm btn btn-outline-secondary-false mr-1 p-1"  *ngIf="seat.available&&!seat.booked&&seat.seatNo>18" (click)="addPrice(i,seat.seatNo)"> {{seat.seatNo}}
+       </button>
+       <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+       margin-right: 2px;
+       margin-bottom: 4px;background-color: lightgrey;
+       margin-left: 2px;" class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1" *ngIf="!seat.available&&seat.seatNo>18"(click)="addPrice(i,seat.seatNo)" > {{seat.seatNo}}
+    </button>
+    <button  style="display: inline-block;font-size:  10px; text-align: center; width: 22px;height: 22px; border-radius: 5px;margin-top: 4px;
+         margin-right: 2px;
+        margin-bottom: 4px;background-color: #00CC99;
+        margin-left: 2px;" class="btn text-white btn-sm btn btn-outline-secondary-false mr-1 p-1" *ngIf="seat.available&&seat.booked&&seat.seatNo>18" (click)="addPrice(i,seat.seatNo)"> {{seat.seatNo}}
+    </button>
+         </div>
+         </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div  class="row">
+          <div  class="col text-center">
+            <span >
+              <svg xml:space="preserve" enable-background="new 0 0 100 100" viewBox="0 0 260 20" y="0px" x="0px" width="260px" height="20px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="fill: rgba(0, 0, 0, 0.6);"><g fill="none" fill-rule="evenodd" opacity=".3"><g fill="#E1E8F1"><path id="da" d="M27.1 0h205.8L260 14.02H0z"></path></g><path stroke="#4F91FF" stroke-width=".65" d="M27.19.33L1.34 13.7h257.32L232.81.32H27.2z"></path><path fill="#8FB9FF" d="M28.16 2.97h203.86l17.95 9.14H10.35z"></path><g fill="#E3ECFA"><path id="db" d="M0 13.88h260l-3.44 6.06H3.44z"></path></g><path stroke="#4F91FF" stroke-width=".65" d="M.56 14.2l3.07 5.41h252.74l3.07-5.4H.56z"></path></g></svg>
+             </span>
+              <br>
+              <span  style="font-size: 10 px;">
+                <p >All Eyes this way please!</p>
+              </span>
+            </div>
+          </div>
+          <div class="row fixed-bottom">
+            <div  class="col-4"></div>
+            <div  class="col-lg-4 col-6 ml-3 mr-2 text-center">
+            <button  class="btn btn-primary btn-block btn-md" *ngIf="total>0" (click)="payment()">Pay Rs. {{total}}</button>
+          </div>
+        </div>
+
+
+ <!-- <div class="small ml-3 fsmall mb-0"  *ngFor="let s of details;index as i" >
+    <div *ngIf="s.price==420">
+      <p class="rname mb-0" >{{s.rowName}} </p>
+    <div  class="cell m-1" *ngFor="let seat of s.seatList">
+      <div class="cell1  text-center" *ngIf="seat.available&&!seat.booked" (click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="!seat.available" style="background-color: lightgrey;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="seat.available&&seat.booked" style="background-color:#00CC99;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+    </div>
+    </div>
+   </div>
+ <p class="mb-0 mt-4 text-secondary"> GOLD - Rs 250.00</p>
+  <hr class="mt-0">
+  <div class="small ssmall ml-3 mb-0"  *ngFor="let s of details;index as i" >
+    <div *ngIf="s.price==250">
+      <p class="rname mb-0" >{{s.rowName}} </p>
+    <div  class="cell m-1 " *ngFor="let seat of s.seatList">
+     <div  *ngIf="seat.seatNo<8">
+      <div class="cell1  text-center" *ngIf="seat.available&&!seat.booked" (click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="!seat.available" style="background-color: lightgrey;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="seat.available&&seat.booked" style="background-color: #00CC99;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+     </div>
+     <div  class="frow" *ngIf="seat.seatNo==7"></div>
+     <div  *ngIf="seat.seatNo>7&&seat.seatNo<19">
+      <div class="cell1  text-center" *ngIf="seat.available&&!seat.booked" (click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="!seat.available" style="background-color: lightgrey;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="seat.available&&seat.booked" style="background-color: #00CC99;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+     </div>
+     <div  class="frow" *ngIf="seat.seatNo==18"></div>
+     <div  *ngIf="seat.seatNo>18">
+      <div class="cell1  text-center" *ngIf="seat.available&&!seat.booked" (click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="!seat.available" style="background-color: lightgrey;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+      <div class="cell1  text-white text-center" *ngIf="seat.available&&seat.booked" style="background-color: #00CC99;"(click)="addPrice(i,seat.seatNo)">{{seat.seatNo}}</div>
+     </div>
+    </div>
+    </div>
+   </div>
+</div>
+<div class="row mt-5">
+  <div class="col-4 offset-4">
+    <svg xml:space="preserve" enable-background="new 0 0 100 100" viewBox="0 0 260 20" y="0px" x="0px" width="260px" height="20px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="fill: rgba(0, 0, 0, 0.6);"><g fill="none" fill-rule="evenodd" opacity=".3"><g fill="#E1E8F1"><path id="da" d="M27.1 0h205.8L260 14.02H0z"></path></g><path stroke="#4F91FF" stroke-width=".65" d="M27.19.33L1.34 13.7h257.32L232.81.32H27.2z"></path><path fill="#8FB9FF" d="M28.16 2.97h203.86l17.95 9.14H10.35z"></path><g fill="#E3ECFA"><path id="db" d="M0 13.88h260l-3.44 6.06H3.44z"></path></g><path stroke="#4F91FF" stroke-width=".65" d="M.56 14.2l3.07 5.41h252.74l3.07-5.4H.56z"></path></g></svg>
+ <br>
+<p class="ml-4 mt-3">
+  All Eyes this way please!
+</p>
+ </div>
+</div>
+
+<div class="cookie-banner bg-primary text-white text-center form-control"(click)="payment()">
+  Pay Rs. {{total}}
+
+</div>
+<div class="row">
+  <div class="col-4 offset-4 " style="position: fixed;
+    bottom: 0px;display: flex" *ngIf="total>0" (click)="payment()">
+ <button class="form-control btn-primary ">Pay Rs. {{total}}</button>
+  </div>
+</div>-->
+

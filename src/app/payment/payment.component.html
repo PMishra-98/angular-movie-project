@@ -1,0 +1,147 @@
+
+
+ <!-- <nav class="navbar navbar-expand text-white bg-dark">
+    <h2 class="pb-2 ml-lg-2 mx-2"> <a class=" text-white" (click)="back()" routerLinkActive="active">
+     <i class="fa fa-chevron-left" ></i></a></h2>
+     <div class="collapse navbar-collapse flex-column">
+             <ul class="navbar-nav mr-auto mb-0">
+                 <li class="nav-item ">
+                     <a class="nav-link" *ngIf="details.title"><h4>{{details.title}}</h4></a>
+                 </li>
+             </ul>
+             <ul class="navbar-nav ml-auto mb-0">
+               <li  class="nav-item ">
+                 <a class="nav-link" (click)="back()"><i class="fa fa-times"></i></a>
+               </li>
+             </ul>
+         <ul class="navbar-nav flex-row mr-auto mb-0 mt-0">
+                 <li class="nav-item">
+                     <a class="nav-link " *ngIf="details.movieHall"><h6>{{details.movieHall}}</h6></a>
+                 </li>
+             </ul>
+           
+         </div>
+   </nav>-->
+   <div  class="row bg-dark pt-1 pb-3" style="font-size:60px;" >
+    <div  class="col-lg-6  col-md-12 col-sm-12  text-left text-white" style="font-size: 25px;">
+      <div  class="row ">
+        <div  class="col-lg-1 col-md-1 col-2  pt-2">
+          <a class="text-white"(click)="back()"><i  class="fa fa-chevron-left ml-2"></i></a>
+        </div>
+        <div  class="col-lg-11 col-md-4 col-7">
+          <div class="row"><span >{{title}}</span>
+          </div>
+          <div class="row" style="font-size: 15px;"> 
+            {{details.movieHall}}
+          </div></div></div>
+        </div>
+        <div  class="col-lg-6 text-right text-white d-none d-lg-block">
+          <div  class="row pt-3 ">
+            <div class="col" style="font-size: 15px;">
+               <a class="text-white" (click)="back()"><i  class="fa fa-times mr-2"></i></a>
+       </div>
+      </div>
+    </div>
+  </div>
+  <div  class="row" style="background-color: #f5f5fa;">
+    <div  class="col">
+    <div class="row">
+    <div  class="col-lg-8 col-md-4 p-2 m-2" style="background-color: white;">
+    <img alt="bookasmile-03" class="img-fluid" src="https://i.ibb.co/SK0HfNT/bookasmile-03.png">
+    </div>
+    <div  class="col-lg-3 col-md-6" style="background-color: white;">
+    <div  class="row"><div  class="col">
+    <div  class="row text-danger mt-1 ml-1"> BOOKING SUMMARY </div>
+    <br ><div  class="row ml-2">
+    <div  class="col-6 text-left">Movie Name</div>
+    <div class="col-6 text-right">{{details.title}}</div></div>
+    <div class="row ml-2"><div  class="col-5 text-left">Movie Hall</div>
+    <div  class="col-7 text-right">{{details.movieHall}}</div>
+    </div>
+    <div  class="row ml-2"><div class="col-6 text-left">Total Tickets
+    </div><div  class="col-6 text-right">{{ticket}}</div></div><div  class="row ml-2"><!---->
+    <div  class="col-6 text-left">Tickets</div><div class="col-6 text-right">{{details.tickets}}</div></div>
+    <div  class="row ml-2"><div  class="col-4 text-left">Date</div>
+    <div  class="col-8 text-right">{{details.date}}</div></div><div  class="row ml-2">
+    <div  class="col-6 text-left">Time</div><div  class="col-6 text-right">{{details.time}}</div></div><!---->
+    <div  class="row ml-2 pt-2 pb-2" style="background-color: #fffcdc;"><div  class="col-6 text-left">Amount Paid</div>
+    <div  class="col-6 text-right">{{details.amount}}</div></div><div  class="row ml-4 text-center">
+    <img 
+    class="img-fluid" src="https://i.ibb.co/CVHYxVK/images-q-tbn-ANd9-Gc-Qq-PT1-GB7-Cpvo3-WDDCi-Wt-Vto-Q-SLqp-Z9-B1x-D3-D69-WTj-MPyl-Chnd.png" style="height: 300px;
+     width: 300px;"></div><div  class="row ml-2" style="font-size: 10px;"> 
+    You can cancel the tickets 4 hour(s) before the show. Refunds will be done according to Cancellation Policy. 
+    </div></div><br></div></div>
+    <br ></div></div></div>
+ <!--  <div class="row bg-light mt-3" style="font-size: large;">
+     <div class="col-lg-8 col-md-5 col-sm-12 col-xs-12 bg-white m-1">
+       <div class="row">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+          <img src="https://i.ibb.co/SK0HfNT/bookasmile-03.png">
+          </div>
+         </div>
+       </div>
+     </div>
+  
+    
+     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 bg-white ">
+      <div class="row mb-3">
+        <div class="col text-danger" style="font-size: larger;">BOOKING SUMMARY</div>
+      </div>
+      <div class="row">
+        <div class="col-6" > Movie Name</div>
+        <div class="col-6 text-right" *ngIf="details.title"> {{details.title}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6"> Movie Hall</div>
+        <div class="col-6 text-right" *ngIf="details.movieHall"> {{details.movieHall}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6"> Total Tickets</div>
+        <div class="col-6 text-right" > {{ticket}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6"> Tickets</div>
+        <div class="col-6 text-right" *ngIf="details.tickets"> {{details.tickets}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6"> Date</div>
+        <div class="col-6 text-right" *ngIf="details.date"> {{details.date}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6">Time</div>
+        <div class="col-6 text-right" *ngIf="details.time"> {{details.time}}</div>
+      </div>
+      <div class="row " style="background-color: #FFDEAD; ">
+        <div class="col-6 "> Amount Paid</div>
+        <div class="col-6 text-right " *ngIf="details.amount"> {{details.amount}}</div>
+      </div>
+       <div class="row">
+         <div class="col"><img style="width: 300px;" src="https://i.ibb.co/CVHYxVK/images-q-tbn-ANd9-Gc-Qq-PT1-GB7-Cpvo3-WDDCi-Wt-Vto-Q-SLqp-Z9-B1x-D3-D69-WTj-MPyl-Chnd.png"></div>
+       </div>
+       <div class="row small mt-3"><div class="col">
+        You can cancel the tickets 4 hour(s) before the show. Refunds will be done according to Cancellation Policy.
+       </div>
+  
+     </div>
+   </div>-->
+
+ <!--
+
+    <div class="row">
+      <div class="col-6">Movie Name <br>
+        Movie Hall  <br>
+        Total Tickets <br>
+        Tickets <br>
+        Date<br>
+        Time
+       </div>
+         <div class="col-6 text-right">{{details.movie}} <br>
+        {{details.hall}}  <br>
+         {{details.ticketCount}} <br>
+        {{details.ticket}} <br>
+         {{details.date}}<br>
+         {{details.time}}
+         </div>
+    </div>
+ -->
